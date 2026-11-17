@@ -1,0 +1,15 @@
+.task-card {
+  padding: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 12px;
+
+  h3 {
+    margin-top: 0;
+  }
+
+  button {
+    margin-right: 8px;
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,17 @@
+<article class="task-card">
+  <h3>{{ task().title }}</h3>
+
+  @if (task().completed) {
+  <p>Ukończone</p>
+  } @else {
+  <p>Do zrobienia</p>
+  }
+
+  <button type="button" (click)="toggleCompleted()">
+    {{ task().completed ? 'Cofnij' : 'Ukończ' }}
+  </button>
+
+  <button type="button" (click)="requestDelete()">
+    Usuń
+  </button>
+</article>

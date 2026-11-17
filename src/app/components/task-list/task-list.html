@@ -1,0 +1,73 @@
+<app-card>
+  <h2 card-header>Moje zadania</h2>
+
+  <section class="statistics">
+    <p>Wszystkie: {{ totalCount() }}</p>
+    <p>Ukończone: {{ completedCount() }}</p>
+    <p>Aktywne: {{ activeCount() }}</p>
+  </section>
+
+  <div class="filters">
+    <button
+      type="button"
+      (click)="setFilter('all')"
+      [disabled]="filter() === 'all'"
+    >
+      Wszystkie
+    </button>
+
+    <button
+      type="button"
+      (click)="setFilter('active')"
+      [disabled]="filter() === 'active'"
+    >
+      Aktywne
+    </button>
+
+    <button
+      type="button"
+      (click)="setFilter('done')"
+      [disabled]="filter() === 'done'"
+    >
+      Ukończone
+    </button>
+  </div>
+
+  <div class="search">
+    <input
+      type="text"
+      placeholder="Szukaj zadania..."
+      [value]="searchQuery()"
+      (input)="updateSearch($event)"
+    />
+  </div>
+
+  <p>Widoczne zadania: {{ visibleTasks().length }}</p>
+
+  @for (task of visibleTasks(); track task.id) {
+  <div class="task-row">
+    <app-task-card
+      [task]="task"
+      (deleteRequested)="deleteTask($event)"
+      (completedToggled)="toggleTask($event)"
+    />
+
+    <button
+      type="button"
+      (click)="selectTask(task.id)"
+    >
+      {{ selectedTaskId() === task.id
+      ? 'Wybrane'
+      : 'Wybierz' }}
+    </button>
+  </div>
+  } @empty {
+  <p>Brak zadań spełniających kryteria.</p>
+  }
+
+  @if (selectedTaskId() !== null) {
+  <p>Wybrane zadanie ID: {{ selectedTaskId() }}</p>
+  } @else {
+  <p>Żadne zadanie nie jest wybrane.</p>
+  }
+</app-card>
