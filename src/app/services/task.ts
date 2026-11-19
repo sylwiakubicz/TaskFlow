@@ -26,11 +26,35 @@ export class TaskService {
   readonly tasks = this.tasksState.asReadonly();
 
   readonly totalCount = computed(() => this.tasks().length);
-  readonly completedCount = computed(() => this.tasks().filter((task) => task.status === 'done').length);
-  readonly activeCount = computed(() => this.tasks().filter((task) => task.status !== 'done').length);
+  readonly completedCount = computed(
+    () => this.tasks().filter((task) => task.status === 'done').length,
+  );
+  readonly activeCount = computed(
+    () => this.tasks().filter((task) => task.status !== 'done').length,
+  );
 
   deleteTask(id: number): void {
     this.tasksState.update((tasks) => tasks.filter((task) => task.id !== id));
+  }
+
+  addTask(title: string): void {
+    const trimmedTitle = title.trim();
+
+    if (!trimmedTitle) {
+      return;
+    }
+
+    this.tasksState.update((tasks) => {
+      const nextId = Math.max(0, ...tasks.map((task) => task.id)) + 1;
+
+      const newTask: Task = {
+        id: nextId,
+        title: trimmedTitle,
+        status: 'todo',
+      };
+
+      return [...tasks, newTask];
+    });
   }
 
   toggleTask(id: number): void {
