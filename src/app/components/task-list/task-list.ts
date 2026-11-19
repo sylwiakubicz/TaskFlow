@@ -30,8 +30,8 @@ export class TaskList {
     return tasks.filter((task) => {
       const matchesFilter =
         filter === 'all' ||
-        (filter === 'active' && !task.completed) ||
-        (filter === 'done' && task.completed);
+        (filter === 'active' && task.status !== 'done') ||
+        (filter === 'done' && task.status === 'done');
 
       const matchesSearch = task.title.toLowerCase().includes(query);
 
