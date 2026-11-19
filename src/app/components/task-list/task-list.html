@@ -1,6 +1,22 @@
 <app-card>
   <h2 card-header>Moje zadania</h2>
 
+  <form (submit)="$event.preventDefault(); addTask()">
+    <label for="task-title">Tytuł zadania</label>
+
+    <input
+      id="task-title"
+      type="text"
+      [formControl]="titleControl"
+    />
+
+    @if (titleControl.invalid && titleControl.touched) {
+    <p>Podaj tytuł zadania.</p>
+    }
+
+    <button type="submit">Dodaj</button>
+  </form>
+
   <section class="statistics">
     <p>Wszystkie: {{ totalCount() }}</p>
     <p>Ukończone: {{ completedCount() }}</p>

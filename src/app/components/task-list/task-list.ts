@@ -1,4 +1,5 @@
 import { Component, signal, computed, effect, linkedSignal, inject } from '@angular/core';
+import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { TaskCard } from '../task-card/task-card';
 import { AppCard } from '../app-card/app-card';
@@ -8,7 +9,7 @@ type TaskFilter = 'all' | 'active' | 'done';
 
 @Component({
   selector: 'app-task-list',
-  imports: [TaskCard, AppCard],
+  imports: [TaskCard, AppCard, ReactiveFormsModule],
   templateUrl: './task-list.html',
   styleUrl: './task-list.scss',
 })
@@ -21,6 +22,23 @@ export class TaskList {
 
   filter = signal<TaskFilter>('all');
   searchQuery = signal('');
+
+  readonly titleControl = new FormControl('', {
+    nonNullable: true,
+    validators: [Validators.required],
+  });
+
+  addTask(): void {
+    const title = this.titleControl.value.trim();
+
+    if (this.titleControl.invalid || !title) {
+      this.titleControl.markAsTouched();
+      return;
+    }
+
+    this.taskService.addTask(title);
+    this.titleControl.reset();
+  }
 
   visibleTasks = computed(() => {
     const tasks = this.tasks();
