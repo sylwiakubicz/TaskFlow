@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { TaskService} from '../../services/task';
 
 @Component({
   selector: 'app-header',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrl: './header.scss',
 })
 export class Header {
+  private readonly taskService = inject(TaskService);
   appName = 'TaskFlow';
+
+  readonly totalCount = this.taskService.totalCount;
+  readonly completedCount = this.taskService.completedCount;
 }
