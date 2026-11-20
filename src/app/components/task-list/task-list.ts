@@ -1,6 +1,6 @@
 import { Component, signal, computed, effect, linkedSignal, inject } from '@angular/core';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
-
+import { RouterLink } from '@angular/router';
 import { TaskCard } from '../task-card/task-card';
 import { AppCard } from '../app-card/app-card';
 import { TaskService } from '../../services/task';
@@ -9,7 +9,7 @@ type TaskFilter = 'all' | 'active' | 'done';
 
 @Component({
   selector: 'app-task-list',
-  imports: [TaskCard, AppCard, ReactiveFormsModule],
+  imports: [TaskCard, AppCard, ReactiveFormsModule, RouterLink],
   templateUrl: './task-list.html',
   styleUrl: './task-list.scss',
 })

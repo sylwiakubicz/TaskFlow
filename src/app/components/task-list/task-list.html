@@ -67,6 +67,7 @@
       (deleteRequested)="deleteTask($event)"
       (completedToggled)="toggleTask($event)"
     />
+    <a [routerLink]="['/tasks', task.id]">Szczegóły</a>
 
     <button
       type="button"
