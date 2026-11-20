@@ -12,6 +12,13 @@ describe('TaskCard', () => {
 
     fixture = TestBed.createComponent(TaskCard);
     component = fixture.componentInstance;
+
+    fixture.componentRef.setInput('task', {
+      id: 1,
+      title: 'przykłądowe zadanie',
+      status: 'toto'
+    });
+
     await fixture.whenStable();
   });
 
