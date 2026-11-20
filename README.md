@@ -1,34 +1,34 @@
 # TaskFlow
 
-TaskFlow to prosta aplikacja do zarządzania zadaniami, zbudowana w Angularze. Pozwala dodawać i usuwać zadania, oznaczać je jako ukończone, filtrować oraz wyszukiwać po tytule. Wyświetla liczniki zadań i widok szczegółów zadania.
+TaskFlow is a simple task management application built with Angular. You can add and delete tasks, mark them as completed, filter them, and search by title. The application also displays task counts and a task details view.
 
-Dane są przechowywane w pamięci aplikacji: po odświeżeniu strony przywracana jest początkowa lista. Projekt nie korzysta z backendu.
+Tasks are stored in memory, so refreshing the page restores the initial list. The project does not use a backend.
 
-## Technologie
+## Technologies
 
-- Angular 22 i TypeScript
-- Angular Signals, Reactive Forms i Router
-- Vitest do testów jednostkowych
+- Angular 22 and TypeScript
+- Angular Signals, Reactive Forms, and Router
+- Vitest for unit testing
 
-## Uruchomienie
+## Getting started
 
-Potrzebne są Node.js i npm. W tym środowisku używane są Node.js 24 oraz npm 11.
+You need Node.js and npm. This project has been run with Node.js 24 and npm 11.
 
 ```bash
 npm install
 npm start
 ```
 
-Otwórz [http://localhost:4200/](http://localhost:4200/). Serwer deweloperski automatycznie odświeża aplikację po zmianach w plikach.
+Open [http://localhost:4200/](http://localhost:4200/). The development server automatically reloads the application when files change.
 
-## Testy i build
+## Tests and build
 
 ```bash
-npm test                  # testy w trybie obserwowania zmian
-npm test -- --watch=false # jednokrotne uruchomienie testów
-npm run build             # build produkcyjny w katalogu dist/
+npm test                  # Run tests in watch mode
+npm test -- --watch=false # Run tests once
+npm run build             # Create a production build in dist/
 ```
 
-## Struktura
+## Structure
 
-`TaskService` przechowuje zadania i udostępnia liczniki. `TaskList` obsługuje listę, formularz i filtrowanie, `TaskCard` prezentuje pojedyncze zadanie, a `TaskDetails` pokazuje szczegóły na podstawie identyfikatora w adresie.
+`TaskService` stores tasks and provides counts. `TaskList` handles the list, form, and filtering; `TaskCard` displays an individual task; and `TaskDetails` displays details based on the ID in the URL.
