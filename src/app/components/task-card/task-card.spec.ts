@@ -15,7 +15,7 @@ describe('TaskCard', () => {
 
     fixture.componentRef.setInput('task', {
       id: 1,
-      title: 'przykłądowe zadanie',
+      title: 'Example task',
       status: 'toto'
     });
 

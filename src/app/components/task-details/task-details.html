@@ -1,11 +1,11 @@
-<a routerLink="/tasks">← Wróć do zadań</a>
+<a routerLink="/tasks">← Back to tasks</a>
 
 @if (taskId() === null) {
-<p>Nieprawidłowy identyfikator zadania.</p>
+<p>Invalid task ID.</p>
 } @else if (task(); as currentTask) {
 <h2>{{ currentTask.title }}</h2>
 <p>ID: {{ currentTask.id }}</p>
 <p>Status: {{ currentTask.status }}</p>
 } @else {
-<p>Nie znaleziono zadania.</p>
+<p>Task not found.</p>
 }

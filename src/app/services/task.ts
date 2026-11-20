@@ -9,17 +9,17 @@ export class TaskService {
   private readonly tasksState = signal<Task[]>([
     {
       id: 1,
-      title: 'Powtórzyć komponenty',
+      title: 'Review components',
       status: 'todo',
     },
     {
       id: 2,
-      title: 'Zainstalować Angular CLI',
+      title: 'Install Angular CLI',
       status: 'done',
     },
     {
       id: 3,
-      title: 'Poznać nowy control flow',
+      title: 'Learn the new control flow',
       status: 'in-progress',
     },
   ]);

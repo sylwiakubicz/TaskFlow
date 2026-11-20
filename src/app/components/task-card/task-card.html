@@ -2,16 +2,16 @@
   <h3>{{ task().title }}</h3>
 
   @if (task().status === 'done') {
-  <p>Ukończone</p>
+  <p>Completed</p>
   } @else {
-  <p>Do zrobienia</p>
+  <p>To do</p>
   }
 
   <button type="button" (click)="toggleCompleted()">
-    {{ task().status === 'done' ? 'Cofnij' : 'Ukończ' }}
+    {{ task().status === 'done' ? 'Undo' : 'Complete' }}
   </button>
 
   <button type="button" (click)="requestDelete()">
-    Usuń
+    Delete
   </button>
 </article>

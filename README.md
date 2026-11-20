@@ -1,59 +1,34 @@
-# Taskflow
+# TaskFlow
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.3.
+TaskFlow to prosta aplikacja do zarządzania zadaniami, zbudowana w Angularze. Pozwala dodawać i usuwać zadania, oznaczać je jako ukończone, filtrować oraz wyszukiwać po tytule. Wyświetla liczniki zadań i widok szczegółów zadania.
 
-## Development server
+Dane są przechowywane w pamięci aplikacji: po odświeżeniu strony przywracana jest początkowa lista. Projekt nie korzysta z backendu.
 
-To start a local development server, run:
+## Technologie
 
-```bash
-ng serve
-```
+- Angular 22 i TypeScript
+- Angular Signals, Reactive Forms i Router
+- Vitest do testów jednostkowych
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Uruchomienie
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Potrzebne są Node.js i npm. W tym środowisku używane są Node.js 24 oraz npm 11.
 
 ```bash
-ng generate component component-name
+npm install
+npm start
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Otwórz [http://localhost:4200/](http://localhost:4200/). Serwer deweloperski automatycznie odświeża aplikację po zmianach w plikach.
+
+## Testy i build
 
 ```bash
-ng generate --help
+npm test                  # testy w trybie obserwowania zmian
+npm test -- --watch=false # jednokrotne uruchomienie testów
+npm run build             # build produkcyjny w katalogu dist/
 ```
 
-## Building
+## Struktura
 
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+`TaskService` przechowuje zadania i udostępnia liczniki. `TaskList` obsługuje listę, formularz i filtrowanie, `TaskCard` prezentuje pojedyncze zadanie, a `TaskDetails` pokazuje szczegóły na podstawie identyfikatora w adresie.

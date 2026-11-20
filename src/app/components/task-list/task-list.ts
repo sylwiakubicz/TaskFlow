@@ -72,7 +72,7 @@ export class TaskList {
 
   constructor() {
     effect(() => {
-      console.log('Liczba ukończonych:', this.completedCount());
+      console.log('Completed count:', this.completedCount());
     });
   }
 

@@ -1,8 +1,8 @@
 <app-card>
-  <h2 card-header>Moje zadania</h2>
+  <h2 card-header>My tasks</h2>
 
   <form (submit)="$event.preventDefault(); addTask()">
-    <label for="task-title">Tytuł zadania</label>
+    <label for="task-title">Task title</label>
 
     <input
       id="task-title"
@@ -11,16 +11,16 @@
     />
 
     @if (titleControl.invalid && titleControl.touched) {
-    <p>Podaj tytuł zadania.</p>
+    <p>Enter a task title.</p>
     }
 
-    <button type="submit">Dodaj</button>
+    <button type="submit">Add</button>
   </form>
 
   <section class="statistics">
-    <p>Wszystkie: {{ totalCount() }}</p>
-    <p>Ukończone: {{ completedCount() }}</p>
-    <p>Aktywne: {{ activeCount() }}</p>
+    <p>All: {{ totalCount() }}</p>
+    <p>Completed: {{ completedCount() }}</p>
+    <p>Active: {{ activeCount() }}</p>
   </section>
 
   <div class="filters">
@@ -29,7 +29,7 @@
       (click)="setFilter('all')"
       [disabled]="filter() === 'all'"
     >
-      Wszystkie
+      All
     </button>
 
     <button
@@ -37,7 +37,7 @@
       (click)="setFilter('active')"
       [disabled]="filter() === 'active'"
     >
-      Aktywne
+      Active
     </button>
 
     <button
@@ -45,20 +45,20 @@
       (click)="setFilter('done')"
       [disabled]="filter() === 'done'"
     >
-      Ukończone
+      Completed
     </button>
   </div>
 
   <div class="search">
     <input
       type="text"
-      placeholder="Szukaj zadania..."
+      placeholder="Search tasks..."
       [value]="searchQuery()"
       (input)="updateSearch($event)"
     />
   </div>
 
-  <p>Widoczne zadania: {{ visibleTasks().length }}</p>
+  <p>Visible tasks: {{ visibleTasks().length }}</p>
 
   @for (task of visibleTasks(); track task.id) {
   <div class="task-row">
@@ -67,24 +67,24 @@
       (deleteRequested)="deleteTask($event)"
       (completedToggled)="toggleTask($event)"
     />
-    <a [routerLink]="['/tasks', task.id]">Szczegóły</a>
+    <a [routerLink]="['/tasks', task.id]">Details</a>
 
     <button
       type="button"
       (click)="selectTask(task.id)"
     >
       {{ selectedTaskId() === task.id
-      ? 'Wybrane'
-      : 'Wybierz' }}
+      ? 'Selected'
+      : 'Select' }}
     </button>
   </div>
   } @empty {
-  <p>Brak zadań spełniających kryteria.</p>
+  <p>No tasks match your criteria.</p>
   }
 
   @if (selectedTaskId() !== null) {
-  <p>Wybrane zadanie ID: {{ selectedTaskId() }}</p>
+  <p>Selected task ID: {{ selectedTaskId() }}</p>
   } @else {
-  <p>Żadne zadanie nie jest wybrane.</p>
+  <p>No task selected.</p>
   }
 </app-card>
